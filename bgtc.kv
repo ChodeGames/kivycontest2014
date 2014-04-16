@@ -5,62 +5,75 @@
 	size_hint: .2, .25
 	pos_hint: ctx.pos_hint
 
+[Building@Button]:
+	text: ctx.text
+	size_hint: .2, .25
+	pos_hint: ctx.pos_hint
+	canvas:
+		Color:
+			rgba: 1, 0, 0, .5
+		Rectangle:
+			size: self.width / 3, self.height / 3
+			pos: self.x + self.width * 0.33, self.y + self.height * 0.2
+		Triangle:
+			points: self.x + self.width * 0.25, self.y + self.height * 0.5, self.x + self.width * 0.5, self.y + self.height * 0.75, self.x + self.width * 0.75, self.y + self.height * 0.5
+
 <BGTCGame>:
-	Butt:
+	Building:
 		id: upper_left
 		pos_hint: {'x': 0, 'y': .75}
 		text: "upper left"
-	Butt:
+	Building:
 		id: upper_midleft
 		pos_hint: {'x': .2, 'y': .75}
 		text: "upper mid-left"
-	Butt:
+	Building:
 		id: upper_center
 		pos_hint: {'x': .4, 'y': .75}
 		text: "upper center"
-	Butt:
+	Building:
 		id: upper_midright
 		pos_hint: {'x': .6, 'y': .75}
 		text: "upper mid-right"
-	Butt:
+	Building:
 		id: upper_right
 		pos_hint: {'x': .8, 'y': .75}
 		text: "upper right"
 	
-	Butt:
+	Building:
 		id: midupper_left
 		pos_hint: {'x': 0, 'y': .5}
 		text: "mid-upper left"
-	Butt:
+	Building:
 		id: midupper_right
 		pos_hint: {'x': .8, 'y': .5}
 		text: "mid-upper right"
-	Butt:
+	Building:
 		id: midlower_left
 		pos_hint: {'x': 0, 'y': .25}
 		text: "mid-lower left"
-	Butt:
+	Building:
 		id: midlower_right
 		pos_hint: {'x': .8, 'y': .25}
 		text: "mid-lower right"
 	
-	Butt:
+	Building:
 		id: lower_left
 		pos_hint: {'x': 0, 'y': 0}
 		text: "lower left"
-	Butt:
+	Building:
 		id: lower_midleft
 		pos_hint: {'x': .2, 'y': 0}
 		text: "lower mid-left"
-	Butt:
+	Building:
 		id: lower_center
 		pos_hint: {'x': .4, 'y': 0}
 		text: "lower center"
-	Butt:
+	Building:
 		id: lower_midright
 		pos_hint: {'x': .6, 'y': 0}
 		text: "lower mid-right"
-	Butt:
+	Building:
 		id: lower_right
 		pos_hint: {'x': .8, 'y': 0}
 		text: "lower right"
