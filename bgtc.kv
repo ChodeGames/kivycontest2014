@@ -6,6 +6,22 @@
 	pos_hint: ctx.pos_hint
 
 <BGTCGame>:
+	player1: player1
+	upper_left: upper_left
+	upper_midleft: upper_midleft
+	upper_center: upper_center
+	upper_midright: upper_midright
+	upper_right: upper_right
+	midupper_left: midupper_left
+	midupper_right: midupper_right
+	midlower_left: midlower_left
+	midlower_right: midlower_right
+	lower_left: lower_left
+	lower_midleft: lower_midleft
+	lower_center: lower_center
+	lower_midright: lower_midright
+	lower_right: lower_right
+	
 	Butt:
 		id: upper_left
 		pos_hint: {'x': 0, 'y': .75}
@@ -70,3 +86,16 @@
 		pos_hint: {'x': .2, 'y': .25}
 		size_hint: .6, .5
 		text: "Billy Goes To College"
+	
+	Player:
+		id: player1
+		pos: self.parent.pos
+
+<Player>:
+	size: 50, 50
+	canvas:
+		Color:
+			rgb: 1, 1, 1
+		Ellipse:
+			pos: self.pos
+			size: self.size
