@@ -9,9 +9,10 @@
 	text: ctx.text
 	size_hint: .2, .25
 	pos_hint: ctx.pos_hint
+	color: ctx.color
 	canvas:
 		Color:
-			rgba: 1, 0, 0, .5
+			rgba: self.color
 		Rectangle:
 			size: self.width / 3, self.height / 3
 			pos: self.x + self.width * 0.33, self.y + self.height * 0.2
@@ -23,60 +24,74 @@
 		id: upper_left
 		pos_hint: {'x': 0, 'y': .75}
 		text: "upper left"
+		color: (1,0,0,.5)
 	Building:
 		id: upper_midleft
 		pos_hint: {'x': .2, 'y': .75}
 		text: "upper mid-left"
+		color: (1,1,0,.5)
 	Building:
 		id: upper_center
 		pos_hint: {'x': .4, 'y': .75}
 		text: "upper center"
+		color: (1,0,1,.5)
 	Building:
 		id: upper_midright
 		pos_hint: {'x': .6, 'y': .75}
 		text: "upper mid-right"
+		color: (1,1,1,.5)
 	Building:
 		id: upper_right
 		pos_hint: {'x': .8, 'y': .75}
 		text: "upper right"
+		color: (0,1,0,.5)
 	
 	Building:
 		id: midupper_left
 		pos_hint: {'x': 0, 'y': .5}
 		text: "mid-upper left"
+		color: (0,0,1,.5)
 	Building:
 		id: midupper_right
 		pos_hint: {'x': .8, 'y': .5}
 		text: "mid-upper right"
+		color: (0,1,1,.5)
 	Building:
 		id: midlower_left
 		pos_hint: {'x': 0, 'y': .25}
 		text: "mid-lower left"
+		color: (1,0,1,.3)
 	Building:
 		id: midlower_right
 		pos_hint: {'x': .8, 'y': .25}
 		text: "mid-lower right"
+		color: (1,1,0,.2)
 	
 	Building:
 		id: lower_left
 		pos_hint: {'x': 0, 'y': 0}
 		text: "lower left"
+		color: (1,0,1,.1)
 	Building:
 		id: lower_midleft
 		pos_hint: {'x': .2, 'y': 0}
 		text: "lower mid-left"
+		color: (.5,0,.5,.5)
 	Building:
 		id: lower_center
 		pos_hint: {'x': .4, 'y': 0}
 		text: "lower center"
+		color: (1,.5,.5,.6)
 	Building:
 		id: lower_midright
 		pos_hint: {'x': .6, 'y': 0}
 		text: "lower mid-right"
+		color: (1,0,.5,.7)
 	Building:
 		id: lower_right
 		pos_hint: {'x': .8, 'y': 0}
 		text: "lower right"
+		color: (1,.5,.2,1)
 	
 	Label:
 		id: middle_section
