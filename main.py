@@ -2,6 +2,14 @@ from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
 from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
+from kivy.uix.button import Button
+from kivy.logger import Logger
+
+class Butt(Button):
+	def do_action(self):
+		print self.center
+		x, y = self.center
+		self.parent.player1.move((x-25, y-25))
 
 class BGTCGame(FloatLayout):
 	player1 = ObjectProperty(None)
@@ -21,19 +29,21 @@ class BGTCGame(FloatLayout):
 	lower_midright = ObjectProperty(None)
 	lower_right = ObjectProperty(None)
 	
-	def start(self, vel=(0,0)):
-		self.player1.size = (50, 50)
-		self.player1.center = self.center
-		self.player1.velocity = vel
+	def start(self):
+		self.player1.pos = (375, 500)
+		#self.player1.pos = self.upper_center.center
+		print self.player1.pos
+	
 
 class Player(Widget):
 	velocity_x = NumericProperty(0)
 	velocity_y = NumericProperty(0)
 	velocity = ReferenceListProperty(velocity_x, velocity_y)
-	
 
-	def move(self):
-		self.pos = Vector(*self.velocity) + self.pos
+	def move(self, newpos=(500,500)):
+		#self.pos = Vector(*self.velocity) + self.pos
+		print newpos
+		self.pos = newpos
 
 class BGTCApp(App):
 	def build(self):
