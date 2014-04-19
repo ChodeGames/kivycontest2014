@@ -5,19 +5,38 @@
 	size_hint: .2, .25
 	pos_hint: ctx.pos_hint
 
-[Building@Button]:
-	text: ctx.text
+<Building@Button>:
+	# text: self.text
 	size_hint: .2, .25
-	pos_hint: ctx.pos_hint
-	color: ctx.color
+	pos_hint: self.pos_hint
+	color: self.color
+	building_top_y: self.center_y
+	building_left_x: self.center_x - self.width * 0.3
+	building_right_x: self.center_x + self.width * 0.3
+	building_bottom_y: self.center_x - self.height * 0.4
+	roof_top_y: self.center_y + self.height * 0.3
+	text: str(self.building_left_x)
+
 	canvas:
 		Color:
 			rgba: self.color
-		Rectangle:
-			size: self.width / 3, self.height / 3
-			pos: self.x + self.width * 0.33, self.y + self.height * 0.2
+
+		# Building front
+		Quad:
+			points: self.building_left_x,self.building_top_y,self.building_right_x,self.building_top_y,self.building_right_x,self.building_bottom_y,self.buiding_left_x,self.building_bottom_y
+		# Rectangle:
+			# size: self.width / 3, self.height / 3
+			# pos: self.x + self.width * 0.33, self.y + self.height * 0.2
+
+		# Building side
+		
+
+		# Front of roof
 		Triangle:
 			points: self.x + self.width * 0.25, self.y + self.height * 0.5, self.x + self.width * 0.5, self.y + self.height * 0.75, self.x + self.width * 0.75, self.y + self.height * 0.5
+
+		# Side of roof
+
 
 <BGTCGame>:
 	Building:
