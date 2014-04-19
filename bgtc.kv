@@ -2,7 +2,7 @@
 
 <Butt>
 	size_hint: .2, .25
-	on_press: self.do_action()
+	on_press: self.clicked()
 
 <BGTCGame>:
 	player1: player1
@@ -88,10 +88,11 @@
 	
 	Player:
 		id: player1
-		pos: self.parent.pos
 
 <Player>:
+	size_hint: .05, .05
+	pos: self.parent.width/2 - self.width/2, self.parent.height*.825 + self.height/2
 	canvas:
 		Ellipse:
 			pos: self.pos
-			size: 50, 50
+			size: self.width, self.width

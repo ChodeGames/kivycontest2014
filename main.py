@@ -1,18 +1,22 @@
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
+from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 from kivy.logger import Logger
+from kivy.core.window import Window
 
 class Butt(Button):
-	def do_action(self):
-		print self.center
+	def clicked(self):
+		print "The button that was clicked has a center of "+str(self.center)
 		x, y = self.center
-		self.parent.player1.move((x-25, y-25))
+		playersizex, playersizey = self.parent.player1.size
+		print "The current player size is "+str(self.parent.player1.size)
+		self.parent.player1.move((x-(playersizex/2), y-(playersizey/2)))
 
 class BGTCGame(FloatLayout):
 	player1 = ObjectProperty(None)
+	'''
 	#all the buttons, is this necessary?
 	upper_left = ObjectProperty(None)
 	upper_midleft = ObjectProperty(None)
@@ -28,27 +32,17 @@ class BGTCGame(FloatLayout):
 	lower_center = ObjectProperty(None)
 	lower_midright = ObjectProperty(None)
 	lower_right = ObjectProperty(None)
-	
-	def start(self):
-		self.player1.pos = (375, 500)
-		#self.player1.pos = self.upper_center.center
-		print self.player1.pos
-	
+	'''
 
 class Player(Widget):
-	velocity_x = NumericProperty(0)
-	velocity_y = NumericProperty(0)
-	velocity = ReferenceListProperty(velocity_x, velocity_y)
-
-	def move(self, newpos=(500,500)):
-		#self.pos = Vector(*self.velocity) + self.pos
-		print newpos
+	def move(self, newpos):
+		print "New position for player is "+str(newpos)
+		print "Player size is "+str(self.size)
 		self.pos = newpos
 
 class BGTCApp(App):
 	def build(self):
 		game = BGTCGame()
-		game.start()
 		return game
 
 if __name__ == '__main__':
