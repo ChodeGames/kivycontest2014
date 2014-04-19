@@ -5,6 +5,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 from kivy.logger import Logger
 from kivy.core.window import Window
+from kivy.animation import Animation
 
 class Butt(Button):
 	def clicked(self):
@@ -38,7 +39,8 @@ class Player(Widget):
 	def move(self, newpos):
 		print "New position for player is "+str(newpos)
 		print "Player size is "+str(self.size)
-		self.pos = newpos
+		animation = Animation(pos=newpos)
+		animation.start(self)
 
 class BGTCApp(App):
 	def build(self):
