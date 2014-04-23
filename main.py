@@ -119,15 +119,17 @@ class Player(Widget):
 		print "total_locations is "+str(total_locations)
 		print "max_distance is "+str(max_distance)
 		
-		#make the animation
-		animation = Animation()
+		
+		#make the animation, set the initial duration to 0 so it starts immediately
+		animation = Animation(duration=0)
 		#have the player move to the next button in the list
 		for button in button_list:
 			animation += Animation(
 							pos=(
 								button.center[0]-(self.size[0]/2),
 								button.center[1]-(self.size[1]/2)
-							)
+							),
+							duration=.1
 						)
 		#run the animations
 		animation.start(self)
