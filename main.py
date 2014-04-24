@@ -11,7 +11,9 @@ class Butt(Button):
 	button_index = NumericProperty(1)
 	def clicked(self):
 		#this particular button was clicked, so instruct the player to move here
-		self.parent.player1.move(self.button_index)
+		#check first to see if the player is in the middle of moving
+		if self.parent.player1.is_moving == 0:
+			self.parent.player1.move(self.button_index)
 
 class BGTCGame(FloatLayout):
 	#the player
@@ -57,8 +59,16 @@ class BGTCGame(FloatLayout):
 class Player(Widget):
 	#keep track of where the player is currently
 	location_index = NumericProperty(2)
+	is_moving = NumericProperty(0)
+	
+	#finished_moving is needed since an animation's on_complete needs to call a function
+	def finished_moving(self, instance, value):
+		self.is_moving = 0
 	
 	def move(self, target_button_index):
+		#tell the other buttons that we're moving, so they don't work
+		self.is_moving = 1
+		
 		#find out how far away we are from the target button if we go clockwise
 		direction = 'clockwise'
 		distance = 0
@@ -131,6 +141,8 @@ class Player(Widget):
 							),
 							duration=.1
 						)
+		#when the animation completes, call finished_moving(), which will set is_moving to 0
+		animation.bind(on_complete=self.finished_moving)
 		#run the animations
 		animation.start(self)
 		
